@@ -1,0 +1,134 @@
+package com.zoltu.Vacuum.Messages;
+
+enum Type
+{
+	// Randomly generated level. The name is the seed used to generate the level.
+	RANDOM = 0;
+
+	// Level loaded off disc as part of the single player campaign. The name is the name/number of the level.
+	CAMPAIGN = 1;
+
+	// Level is loaded from a level file selected by the user (open file dialog).
+	CUSTOM = 2;
+
+	// Level is loaded from a connected game server.
+	MULTIPLAYER = 3;
+
+	// Level is loaded from an online source via URI.
+	ONLINE = 4;
+}
+
+message Map
+{
+	message Location
+	{
+		required int32 row = 1;
+		required int32 col = 2;
+	}
+	
+	message Piece
+	{
+		enum Team
+		{
+			GOOD = 1;
+			EVIL = 2;
+		}
+		
+		required int32 id = 1;
+		required Location location = 2;
+		optional Team team = 3 [default = GOOD];
+	}
+	
+	message Door
+	{
+		enum Type
+		{
+			// Always open.
+			OPENING = 1;
+			// Always closed.
+			WALL = 2;
+			// Always open for traveling into the room, always closed for traveling out of it.
+			ENTRANCE = 3;
+			// Always open for traveling out of the room, always closed for traveling into the room.
+			EXIT = 4;
+			
+			RED = 100;
+			GREEN = 101;
+			BLUE = 102;
+			CYAN = 103;
+			MAGENTA = 104;
+			YELLOW = 105;
+		}
+		
+		enum State
+		{
+			OPEN = 1;
+			CLOSED = 2;
+		}
+		
+		required Location location = 1;
+		optional Type type = 2 [default = OPENING];
+		optional State state = 3 [default = CLOSED];
+	}
+	
+	message Room
+	{
+		enum Type
+		{
+			ROOM = 1;
+			VACUUM = 2;
+		}
+		
+		required Location location = 1;
+		optional Type type = 2 [default = VACUUM];
+	}
+	
+	required int32 row_count = 1;
+	required int32 col_count = 2;
+	
+	// room array should be (row * col) long.
+	repeated Room room = 3;
+	// door array should be (row * col * 3) long.
+	repeated Door door = 4;
+	// piece array should be (> 0) long.
+	repeated Piece piece = 5;
+}
+
+message TypeAnnouncement
+{
+	required Type type = 1;
+}
+
+message LoadingAnnouncement
+{
+	required string name = 1;
+	required Type type = 2;
+}
+
+message LoadedAnnouncement
+{
+	required string name = 1;
+	required Type type = 2;
+	required Map map = 3;
+}
+
+message LoadRequest
+{
+	required string name = 1;
+	required Type type = 2;
+}
+
+message TypeRequest
+{
+	required Type type = 1;
+}
+
+message NextRequest
+{
+	
+}
+
+message PromptUserRequest
+{
+	required Type type = 1;
+}

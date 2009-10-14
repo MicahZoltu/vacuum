@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	<com.zoltu.Vacuum.ViewGroupRenderer
+		android:id="@+id/ViewGroupRenderer"
+		android:layout_weight="1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"/>
+	<LinearLayout
+		android:layout_weight="0"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<Button
+			android:id="@+id/red"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:text="Red"/>
+		<Button
+			android:id="@+id/green"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:text="Green"/>
+		<Button
+			android:id="@+id/blue"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:text="Blue"/>
+		<Button
+			android:id="@+id/black"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:text="Black"/>
+	</LinearLayout>
+</LinearLayout>

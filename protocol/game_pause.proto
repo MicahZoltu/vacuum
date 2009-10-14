@@ -1,0 +1,11 @@
+package com.zoltu.Vacuum.Messages;
+
+message PauseAnnouncement
+{
+	
+}
+
+message UnpausedAnnouncement
+{
+	
+}
