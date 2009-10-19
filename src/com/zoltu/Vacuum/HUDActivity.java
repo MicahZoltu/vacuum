@@ -3,6 +3,11 @@ package com.zoltu.Vacuum;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.zoltu.Vacuum.Messages.GamePause;
 import com.zoltu.Vacuum.Messages.Level;
 import com.zoltu.Vacuum.Messaging.Broadcaster;
@@ -47,6 +52,10 @@ public class HUDActivity extends Activity implements IBroadcaster
 		super.onCreate(pSavedInstanceState);
 		setContentView(R.layout.main);
 		
+		findViewById(R.id.red).setOnClickListener(new RedButtonListener());
+		findViewById(R.id.green).setOnClickListener(new GreenButtonListener());
+		findViewById(R.id.blue).setOnClickListener(new BlueButtonListener());
+		
 		/* ViewRendererContext runs in the main thread since it interfaces so closely with the Android rendering system. */
 		mRendererContext = new ViewRendererContext(this, getMainLooper(), (ViewGroupRenderer)findViewById(R.id.ViewGroupRenderer));
 		
@@ -82,5 +91,29 @@ public class HUDActivity extends Activity implements IBroadcaster
 	@Override public void RemoveListener(IListener pListener)
 	{
 		mBroadcaster.RemoveListener(pListener);
+	}
+	
+	private class RedButtonListener implements OnClickListener
+	{
+		@Override public void onClick(View pView)
+		{
+			
+		}
+	}
+	
+	private class GreenButtonListener implements OnClickListener
+	{
+		@Override public void onClick(View pView)
+		{
+			
+		}
+	}
+	
+	private class BlueButtonListener implements OnClickListener
+	{
+		@Override public void onClick(View pView)
+		{
+			
+		}
 	}
 }
