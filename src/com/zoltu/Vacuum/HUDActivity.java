@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.HandlerThread;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.zoltu.Vacuum.Messages.GamePause;
 import com.zoltu.Vacuum.Messages.Level;
